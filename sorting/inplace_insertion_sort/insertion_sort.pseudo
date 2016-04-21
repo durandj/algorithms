@@ -1,0 +1,6 @@
+fn insertion_sort(elements : array<T>):
+    for i in [1 ... elements.length):
+        for j in [i - 1 ... 0]:
+            if elements[i] < elements[j]:
+                swap(elements, i, j)
+                i -= 1
