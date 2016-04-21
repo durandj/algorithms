@@ -1,0 +1,27 @@
+fn merge_sort(elements : array<T>):
+    if elements.length <= 1:
+        return elements
+    else if elements.length == 2:
+        if elements[1] < elements[0]:
+            swap(elements, 0, 1)
+
+        return elements
+
+    let midpoint = elements.length / 2;
+    let sorted = new array[elements.length];
+
+    let left = merge_sort(slice(elements, 0, midpoint))
+    left right = merge_sort(slice(elements, midpoint + 1, elements.length))
+
+    let i = 0, j = midpoint + 1, w = 0
+    while i <= midpoint and j < elements.length:
+        if left[i] < right[j]:
+            sorted[w] = left[i]
+            i += 1
+        else:
+            sorted[w] = right[j]
+            j += 1
+
+        w += 1
+
+    return sorted
