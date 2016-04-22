@@ -1,0 +1,31 @@
+fn parent_index(index : int):
+    return index / 2
+
+fn left_index(index : int):
+    return index * 2
+
+fn right_index(index : int):
+    return index * 2 + 1
+
+fn heapify(elements : array<T>, index : int, size : int):
+    let left = left_index(index)
+    let right = right_index(index)
+    let smallest = index
+
+    if left <= size and elements[left] < elements[index]:
+        smallest = left
+    else if right <= size and elements[right] < elements[smallest]:
+        smallest = right
+
+    if smallest != index:
+        swap(elements, index, smallest)
+        heapify(elements, smallest, size)
+
+fn heap_sort(elements : array<T>):
+    for i in [elements.length / 2 ... 1]:
+        heapify(elements, i, elements.length)
+
+    for i in [elements.length - 1 ... 1]:
+        swap(elements, i, 0)
+
+        heapify(elements, 0, i)
