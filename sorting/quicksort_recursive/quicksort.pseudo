@@ -1,0 +1,25 @@
+fn partition(elements : array, start : int, size : int):
+    let value = elements[size - 1]
+    let i = start - 1
+
+    for p in [start ... size - 2]:
+        if elements[p] <= value:
+            i += 1
+            swap(elements, p, i)
+
+    i += 1
+    swap(elements, i, size - 1)
+
+    return i
+
+fn quicksort(elements : array, start : int, size : int):
+    let p = partition(elements, start, size)
+
+    quicksort(elements, start, p)
+    quicksort(elements, p + 1, size)
+
+fn quicksort(elements : array):
+    if elements.length == 0:
+        return
+
+    quicksort(elements, 0, elements.length)
