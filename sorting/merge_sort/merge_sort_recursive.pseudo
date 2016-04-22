@@ -13,8 +13,8 @@ fn merge_sort(elements : array<T>):
     let left = merge_sort(slice(elements, 0, midpoint))
     left right = merge_sort(slice(elements, midpoint + 1, elements.length))
 
-    let i = 0, j = midpoint + 1, w = 0
-    while i <= midpoint and j < elements.length:
+    let i = 0, j = 0, w = 0
+    while i <= midpoint and j < elements.length - midpoint - 1:
         if left[i] < right[j]:
             sorted[w] = left[i]
             i += 1
@@ -22,6 +22,16 @@ fn merge_sort(elements : array<T>):
             sorted[w] = right[j]
             j += 1
 
+        w += 1
+
+    while left_index < midpoint:
+        sorted[w] = left[left_index]
+        left_index += 1
+        w += 1
+
+    while right_index < elements.length - midpoint - 1:
+        sorted[w] = right[right_index]
+        right_index += 1
         w += 1
 
     return sorted
