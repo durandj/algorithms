@@ -15,7 +15,7 @@ namespace data_structures {
 
 template <std::size_t modulo, typename KeyType>
 std::size_t division_hash(const KeyType &key) {
-    return key & modulo;
+    return key % modulo;
 }
 
 class HashTableException : public std::exception {
